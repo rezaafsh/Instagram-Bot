@@ -29,7 +29,7 @@ import glob
 from videoprops import get_audio_properties
 from pyrogram.errors import FloodWait
 from pyrogram.types import InputMediaPhoto, InputMediaVideo, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-IST = pytz.timezone('Asia/Kolkata')
+IST = pytz.timezone('Asia/Tehran')
 USER=Config.USER
 
 
@@ -192,12 +192,8 @@ async def upload(m, bot, chat_id, dir):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-					InlineKeyboardButton("👨🏼‍💻Developer", url='https://t.me/subinps'),
-					InlineKeyboardButton("🤖Other Bots", url="https://t.me/subin_works/122")
-				],
-				[
-					InlineKeyboardButton("🔗Source Code", url="https://github.com/subinps/Instagram-Bot"),
-                    InlineKeyboardButton("⚡️Update Channel", url="https://t.me/subin_works")
+					InlineKeyboardButton("آیدی من", url='https://t.me/rezaaf76'),
+					InlineKeyboardButton("کانال من", url="https://t.me/rezaafsh")
 				]
 			]
 			)
