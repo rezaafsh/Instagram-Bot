@@ -40,18 +40,9 @@ insta = Config.L
 buttons=InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("👨🏼‍💻Developer", url='https://t.me/subinps'),
-            InlineKeyboardButton("🤖Other Bots", url="https://t.me/subin_works/122")
-        ],
-        [
-            InlineKeyboardButton("🔗Source Code", url="https://github.com/subinps/Instagram-Bot"),
-            InlineKeyboardButton("🧩Deploy Own Bot", url="https://heroku.com/deploy?template=https://github.com/subinps/Instagram-Bot")
-        ],
-        [
-            InlineKeyboardButton("👨🏼‍🦯How To Use?", callback_data="help#subin"),
-            InlineKeyboardButton("⚙️Update Channel", url="https://t.me/subin_works")
-        ]
-					
+            InlineKeyboardButton("آیدی من", url='https://t.me/rezaaf76'),
+            InlineKeyboardButton("کانال من", url="https://t.me/rezaafsh")
+        ]					
     ]
     )
 
@@ -70,7 +61,7 @@ async def post(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("اول باید وارد حساب کاربری بشین /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
@@ -78,11 +69,11 @@ async def post(bot, message):
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
         if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+            await message.reply_text("متاسفم!\nاین حساب کاربری عمومی نیست ولی اگر اکانتی داری که باهاش این رو فالو کردی میتونی با اون لاگین کنی <code>@{username}</code>.")
             return
     await bot.send_message(
             message.from_user.id,
-            f"What type of post do you want to download?.",
+            f"چه پست هایی رو میخوای دانلود کنی؟",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -106,7 +97,7 @@ async def igtv(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("اول باید وارد حساب کاربری بشی.. /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
@@ -114,13 +105,13 @@ async def igtv(bot, message):
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
         if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+            await message.reply_text("متاسفم!\nاین حساب کاربری عمومی نیست ولی اگر اکانتی داری که باهاش این رو فالو کردی میتونی با اون لاگین کنی <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Fetching IGTV from <code>@{username}</code>")
     profile = Profile.from_username(insta.context, username)
     igtvcount = profile.igtvcount
     await m.edit(
-        text = f"Do you Want to download all IGTV posts?\nThere are {igtvcount} posts.",
+        text = f"دانلود تمام پست های IGTv؟\nتعداد این پست: {igtvcount} .",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -145,7 +136,7 @@ async def followers(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("اول باید وارد حسابت بشی /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
@@ -153,11 +144,11 @@ async def followers(bot, message):
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
         if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+            await message.reply_text("متاسفم!\nاین حساب کاربری عمومی نیست ولی اگر اکانتی داری که باهاش این رو فالو کردی میتونی با اون لاگین کنی <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
-    m=await message.reply_text(f"Fetching Followers list of <code>@{username}</code>")
+    m=await message.reply_text(f"دریافت لیست فالوور <code>@{username}</code>")
     chat_id=message.from_user.id
     f = profile.get_followers()
     followers=f"**Followers List for {name}**\n\n"
@@ -170,11 +161,11 @@ async def followers(bot, message):
         followers=f"**Followers List for {name}**\n\n"
         f = profile.get_followers()
         for p in f:
-            followers += f"\nName: {p.username} :     Link to Profile: www.instagram.com/{p.username}"
+            followers += f"\nName: {p.username} :     لینک پروفایل: www.instagram.com/{p.username}"
         text_file = open(f"{username}'s followers.txt", "w")
         text_file.write(followers)
         text_file.close()
-        await bot.send_document(chat_id=chat_id, document=f"./{username}'s followers.txt", caption=f"{name}'s followers\n\nA Project By [XTZ_Bots](https://t.me/subin_works)")
+        await bot.send_document(chat_id=chat_id, document=f"./{username}'s followers.txt", caption=f"{name}'s followers\n\nA Project By (https://t.me/rezaafsh)")
         os.remove(f"./{username}'s followers.txt")
 
 
@@ -190,19 +181,19 @@ async def followees(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("اول وارد حسابت باید بشی /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+        if type == "عمومی نیست" and is_followed == "No":
+            await message.reply_text("متاسفم!\nاین حساب کاربری عمومی نیست ولی اگر اکانتی داری که باهاش این رو فالو کردی میتونی با اون لاگین کنی <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
-    m=await message.reply_text(f"Fetching Followees list of <code>@{username}</code>")
+    m=await message.reply_text(f"دریافت لیست فالوور<code>@{username}</code>")
     chat_id=message.from_user.id
     f = profile.get_followees()
     followees=f"**Followees List for {name}**\n\n"
@@ -219,7 +210,7 @@ async def followees(bot, message):
         text_file = open(f"{username}'s followees.txt", "w")
         text_file.write(followees)
         text_file.close()
-        await bot.send_document(chat_id=chat_id, document=f"./{username}'s followees.txt", caption=f"{name}'s followees\n\nA Project By [XTZ_Bots](https://t.me/subin_works)")
+        await bot.send_document(chat_id=chat_id, document=f"./{username}'s followees.txt", caption=f"{name}'s followees\n\nA Project By (https://t.me/rezaafsh)")
         os.remove(f"./{username}'s followees.txt")
 
 
@@ -237,19 +228,19 @@ async def fans(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("اول باید وارد حسابت بشی/login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+        if type == "حساب شخصی" and is_followed == "No":
+            await message.reply_text("متاسفم!\nاین حساب کاربری عمومی نیست ولی اگر اکانتی داری که باهاش این رو فالو کردی میتونی با اون لاگین کنی <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
-    m=await message.reply_text(f"Fetching list of followees of <code>@{username}</code> who follows <code>@{username}</code>.")
+    m=await message.reply_text(f"دریافت لیست فالوینگ ها")
     chat_id=message.from_user.id
     f = profile.get_followers()
     fl = profile.get_followees()
@@ -278,7 +269,7 @@ async def fans(bot, message):
         text_file = open(f"{username}'s fans.txt", "w")
         text_file.write(followers)
         text_file.close()
-        await bot.send_document(chat_id=chat_id, document=f"./{username}'s fans.txt", caption=f"{name}'s fans\n\nA Project By [XTZ_Bots](https://t.me/subin_works)")
+        await bot.send_document(chat_id=chat_id, document=f"./{username}'s fans.txt", caption=f"{name}'s fans\n\nA Project By (https://t.me/rezaafsh)")
         os.remove(f"./{username}'s fans.txt")
 
 
@@ -302,7 +293,7 @@ async def nfans(bot, message):
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
         if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+            await message.reply_text("متاسفم!\nاین حساب کاربری عمومی نیست ولی اگر اکانتی داری که باهاش این رو فالو کردی میتونی با اون لاگین کنی <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
@@ -334,7 +325,7 @@ async def nfans(bot, message):
         text_file = open(f"{username}'s Non_followers.txt", "w")
         text_file.write(followers)
         text_file.close()
-        await bot.send_document(chat_id=chat_id, document=f"./{username}'s Non_followers.txt", caption=f"{name}'s Non_followers\n\nA Project By [XTZ_Bots](https://t.me/subin_works)")
+        await bot.send_document(chat_id=chat_id, document=f"./{username}'s Non_followers.txt", caption=f"{name}'s Non_followers\n\nA Project By (https://t.me/rezaafsh)")
         os.remove(f"./{username}'s Non_followers.txt")
 
 
@@ -473,7 +464,7 @@ async def tagged(bot, message):
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
         if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+            await message.reply_text("متاسفم!\nاین حساب کاربری عمومی نیست ولی اگر اکانتی داری که باهاش این رو فالو کردی میتونی با اون لاگین کنی <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Fetching the posts in which <code>@{username}</code> is tagged.")
     chat_id=message.from_user.id
@@ -518,7 +509,7 @@ async def story(bot, message):
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
         if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+            await message.reply_text("متاسفم!\nاین حساب کاربری عمومی نیست ولی اگر اکانتی داری که باهاش این رو فالو کردی میتونی با اون لاگین کنی <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Fetching stories of <code>@{username}</code>")
     chat_id=message.from_user.id
@@ -599,7 +590,7 @@ async def highlights(bot, message):
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
         if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+            await message.reply_text("متاسفم!\nاین حساب کاربری عمومی نیست ولی اگر اکانتی داری که باهاش این رو فالو کردی میتونی با اون لاگین کنی <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Fetching highlights from profile <code>@{username}</code>")
     chat_id=message.from_user.id
