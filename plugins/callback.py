@@ -53,13 +53,8 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
 			[
 				[
-					InlineKeyboardButton("👨🏼‍💻Developer", url='https://t.me/subinps'),
-					InlineKeyboardButton("🤖Other Bots", url="https://t.me/subin_works/122"),
-                    InlineKeyboardButton("⚙️Update Channel", url="https://t.me/subin_works")
-				],
-				[
-					InlineKeyboardButton("🔗Source Code", url="https://github.com/subinps/Instagram-Bot"),
-					InlineKeyboardButton("🧩Deploy Own Bot", url="https://heroku.com/deploy?template=https://github.com/subinps/Instagram-Bot")
+					InlineKeyboardButton("اطلاع از مشکل", url='https://t.me/rezaaf76'),
+					InlineKeyboardButton("کانال من", url="https://t.me/rezaafsh")
 				]
 			]
 			)
@@ -94,9 +89,9 @@ async def cb_handler(bot: Client, query: CallbackQuery):
 
     elif query.data.startswith("photo"):
         if mediacount==0:
-            await query.edit_message_text("There are no posts by the user")
+            await query.edit_message_text("پستی پیدا نشد")
             return
-        m= await query.edit_message_text("Starting Downloading..\nThis may take time depending upon number of Posts.")      
+        m= await query.edit_message_text("شروع دانلود، مدت زمان انتظار با توجه به تعداد پست ها متفاوته...")      
         dir=f"{query.from_user.id}/{username}"
         command = [
             "instaloader",
@@ -119,9 +114,9 @@ async def cb_handler(bot: Client, query: CallbackQuery):
 
     elif query.data.startswith("video"):
         if mediacount==0:
-            await query.edit_message_text("There are no posts by the user")
+            await query.edit_message_text("پستی پیدا نشد.")
             return
-        m= await query.edit_message_text("Starting Downloading..\nThis may take longer time Depending upon number of posts.")    
+        m= await query.edit_message_text("شروع دانلود، مدت زمان انتظار با توجه به تعداد پست ها متفاوته...")    
         dir=f"{query.from_user.id}/{username}"
         command = [
             "instaloader",
@@ -156,9 +151,9 @@ async def cb_handler(bot: Client, query: CallbackQuery):
         )
     elif query.data.startswith("yesigtv"):
         if igtvcount==0:
-            await query.edit_message_text("There are no IGTV posts by the user")
+            await query.edit_message_text("این کاربر پست IGTV ندارد")
             return
-        m= await query.edit_message_text("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
+        m= await query.edit_message_text("شروع دانلود، مدت زمان انتظار با توجه به تعداد پست ها متفاوته...")
         dir=f"{query.from_user.id}/{username}"
 
         command = [
@@ -196,11 +191,11 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             followers=f"**Followers List for {name}**\n\n"
             f = profile.get_followers()
             for p in f:
-                followers += f"\nName: {p.username} :     Link to Profile: www.instagram.com/{p.username}"
+                followers += f"\nنام: {p.username} :     لینک پروفایل: www.instagram.com/{p.username}"
             text_file = open(f"{username}'s followers.txt", "w")
             text_file.write(followers)
             text_file.close()
-            await bot.send_document(chat_id=chat_id, document=f"./{username}'s followers.txt", caption=f"{name}'s followers\n\nA Project By [XTZ_Bots](https://t.me/subin_works)")
+            await bot.send_document(chat_id=chat_id, document=f"./{username}'s followers.txt", caption=f"{name}'s followers\n\nA Project By [XTZ_Bots](https://t.me/rezaafsh)")
             os.remove(f"./{username}'s followers.txt")
     
 
@@ -223,11 +218,11 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             followees=f"**Followees List for {name}**\n\n"
             f = profile.get_followees()
             for p in f:
-                followees += f"\nName: {p.username} :     Link to Profile: www.instagram.com/{p.username}"
+                followees += f"\nنام: {p.username} :     لینک پروفایل: www.instagram.com/{p.username}"
             text_file = open(f"{username}'s followees.txt", "w")
             text_file.write(followees)
             text_file.close()
-            await bot.send_document(chat_id=chat_id, document=f"./{username}'s followees.txt", caption=f"{name}'s followees\n\nA Project By [XTZ_Bots](https://t.me/subin_works)")
+            await bot.send_document(chat_id=chat_id, document=f"./{username}'s followees.txt", caption=f"{name}'s followees\n\nA Project By [XTZ_Bots](https://t.me/rezaafsh)")
             os.remove(f"./{username}'s followees.txt")
 
 
@@ -243,7 +238,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
         dir=f"{query.from_user.id}/{username}"
         chat_id=query.from_user.id   
         await query.message.delete()
-        m= await bot.send_message(chat_id, "Starting Downloading..\nThis may take longer time Depending upon number of posts.") 
+        m= await bot.send_message(chat_id, "شروع دانلود، مدت زمان انتظار با توجه به تعداد پست ها متفاوته...") 
         cmd, username = query.data.split("#")   
         if cmd == "feed":
             command = [
