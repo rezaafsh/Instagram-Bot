@@ -43,18 +43,9 @@ async def start(bot, cmd):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton("👨🏼‍💻Developer", url='https://t.me/subinps'),
-						InlineKeyboardButton("🤖Other Bots", url="https://t.me/subin_works/122")
-					],
-                    [
-                        InlineKeyboardButton("🔗Source Code", url="https://github.com/subinps/Instagram-Bot"),
-						InlineKeyboardButton("🧩Deploy Own Bot", url="https://heroku.com/deploy?template=https://github.com/subinps/Instagram-Bot")
-                    ],
-                    [
-                        InlineKeyboardButton("👨🏼‍🦯How To Use?", callback_data="help#subin"),
-						InlineKeyboardButton("⚙️Update Channel", url="https://t.me/subin_works")
-
-                    ]
+						InlineKeyboardButton("Developer", url='https://t.me/rezaaf76'),
+						InlineKeyboardButton("کانال من", url="https://t.me/rezaafsh")
+					]
 					
 				]
 			)
@@ -62,24 +53,7 @@ async def start(bot, cmd):
 	else:
 		await cmd.reply_text(
 			HOME_TEXT_OWNER.format(cmd.from_user.first_name, cmd.from_user.id), 
-			disable_web_page_preview=True,
-			reply_markup=InlineKeyboardMarkup(
-				[
-					[
-						InlineKeyboardButton("👨🏼‍💻Developer", url='https://t.me/subinps'),
-						InlineKeyboardButton("🤖Other Bots", url="https://t.me/subin_works/122"),
-					],
-                    [
-                        InlineKeyboardButton("🔗Source Code", url="https://github.com/subinps/Instagram-Bot")
-                    ],
-                    [
-                        InlineKeyboardButton("👨🏼‍🦯How To Use?", callback_data="help#subin"),
-						InlineKeyboardButton("⚙️Update Channel", url="https://t.me/subin_works")
-
-                    ]
-					
-				]
-			)
+			disable_web_page_preview=True
 		)
 
 
@@ -91,14 +65,8 @@ async def help(bot, cmd):
 		reply_markup=InlineKeyboardMarkup(
 			[
 				[
-					InlineKeyboardButton("👨🏼‍💻Developer", url='https://t.me/subinps'),
-					InlineKeyboardButton("🤖Other Bots", url="https://t.me/subin_works/122"),
-					InlineKeyboardButton("⚙️Update Channel", url="https://t.me/subin_works")
+					InlineKeyboardButton("Developer", url='https://t.me/rezaaf76')
 					
-				],
-				[
-					InlineKeyboardButton("🔗Source Code", url="https://github.com/subinps/Instagram-Bot"),
-					InlineKeyboardButton("🧩Deploy Own Bot", url="https://heroku.com/deploy?template=https://github.com/subinps/Instagram-Bot")
 				]
 			]
 			)
@@ -113,27 +81,18 @@ async def stop(bot, cmd):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton("👨🏼‍💻Developer", url='https://t.me/subinps'),
-						InlineKeyboardButton("🤖Other Bots", url="https://t.me/subin_works/122")	
-					],
-                    [
-                        InlineKeyboardButton("🔗Source Code", url="https://github.com/subinps/Instagram-Bot"),
-						InlineKeyboardButton("🧩Deploy Own Bot", url="https://heroku.com/deploy?template=https://github.com/subinps/Instagram-Bot")
-                    ],
-                    [
-                        InlineKeyboardButton("👨🏼‍🦯How To Use?", callback_data="help#subin"),
-						InlineKeyboardButton("⚙️Update Channel", url="https://t.me/subin_works")
-
-                    ]
+						InlineKeyboardButton("Developer", url='https://t.me/rezaaf76'),
+						InlineKeyboardButton("کانال من", url="https://t.me/rezaafsh")	
+					]
 					
 				]
 			)
 		)
 		return
 	msg = await bot.send_message(
-		text="Restarting your bot..",
+		text="راه اندازی مجدد...",
 		chat_id=cmd.from_user.id
 		)
 	await asyncio.sleep(2)
-	await msg.edit("All Processes Stopped and Restarted")
+	await msg.edit("تمام فرآیندها مجددا بازنشانی شد")
 	os.execl(sys.executable, sys.executable, *sys.argv)
